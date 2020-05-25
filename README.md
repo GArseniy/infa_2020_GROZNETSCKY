@@ -1,1 +1,2 @@
-# infa_2020_GROZNETSCKY
+# C++ learning
+
