@@ -1,23 +1,27 @@
 #include <iostream>
 
-int f()
-{
-	int number;
-	int sum = 0;
-	while (true)
-	{
-		std::cin >> number;
-		if (number == 0)
-			return sum;
-		else
-		{
-			if (number % 2 == 0)
-				sum ++;
-		}
-	}
-}
+using namespace std;
 
 int main()
 {
-	std::cout << f();
+    bool flag = true;
+    int counter = 0;
+    while (flag)
+    {
+        int n;
+        cin >> n;
+        if (n!=0)
+        {
+            if (n%2 == 0)
+            {
+                counter ++;
+            }
+        }
+        else
+        {
+            flag = false;
+        }
+    }
+    cout << counter;
+    return 0;
 }

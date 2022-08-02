@@ -1,19 +1,33 @@
 #include <iostream>
+#include <cmath>
+
+
+using namespace std;
+
 
 int main()
 {
-        int num;
-        std::cin >> num;
-        int num_copy = num;
-        int i = 1;
-        while (i <= num_copy)
+    int n;
+    cin >> n;
+    bool flag;
+    while (n != 1)
+    {
+        flag = false;
+        for (int i = 2; i < pow(n, 0.5) + 1; ++i)
         {
-                i ++;
-                while (num % i == 0)
-                        {
-                                num /= i;
-                                std::cout << i << std::endl;
-                        }
+            if (n % i == 0)
+            {
+                n /= i;
+                cout << i << endl;
+                flag = true;
+                break;
+            }
         }
+        if (not flag)
+        {
+            cout << n << endl;
+            break;
+        }
+    }
+    return 0;
 }
-

@@ -1,42 +1,37 @@
 #include <iostream>
 #include <string>
 
-std::string f(int num, int vers)
-{
-	std::string retu = "";
-	int i = 0;
-        while (num % 10 > i)
-        {
-                i ++;
-                retu = "v" + retu;
-	}
-	i = 0;
-	while ((num - (num % 10)) / 10 > i)
-	{		
-		i ++;
-		retu = "<" + retu;
-	}
-	if (vers == 1)
-		retu = "." + retu;
-	return retu;
-}
 
-std::string numeral_system(int num)
+using namespace std;
+
+
+string translate(int n)
 {
-	std::string unnumber = "";
-	while (num >= 60)
-	{
-		unnumber = f(num % 60, 1) + unnumber;
-		num = (num - (num % 60)) / 60;
-	}
-	unnumber = f(num, 0) + unnumber;
-	return unnumber;
+    string s = "";
+    for (int i = 0; i < (n / 10); ++i)
+        s += '<';
+    for (int i = 0; i < (n % 10); ++i)
+        s += 'v';
+    return s;
 }
 
 
 int main()
 {
-	int number;
-	std::cin >> number;
-	std::cout << numeral_system(number);
+    int n;
+    cin >> n;
+    string answer = "";
+    while (true)
+    {
+        answer = translate(n%60) + answer;
+        if (n / 60 > 0)
+        {
+                answer = '.' + answer;
+                n /= 60;
+        }
+        else
+            break;
+    }
+    cout << answer;
+    return 0;
 }

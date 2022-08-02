@@ -1,20 +1,26 @@
 #include <iostream>
+#include <cmath>
+
+
+using namespace std;
+
+
+bool is_prime(int n)
+{
+    if (n <= 1)
+        return 0;
+    int sqrt_n = int(pow(n, 0.5)) + 1;
+    for (int i = 2; i < sqrt_n; ++i)
+        if (n % i == 0)
+            return 0;
+    return 1;
+}
+
 
 int main()
 {
-	int num;
-	int end = 0;
-	std::cin >> num;
-	int i = 1;
-	while ((i < num/2 + 1) && (end == 0))
-	{
-		i ++;
-		if ((num % i == 0) && (num != 1) && (num != 2) && (num != 3))
-		{
-			end = 1;
-			std::cout << 0;
-		}
-	}
-	if (end == 0)
-		std::cout << 1;
+    int n;
+    cin >> n;
+    cout << is_prime(n);
+    return 0;
 }

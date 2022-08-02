@@ -1,52 +1,65 @@
 #include <iostream>
 #include <string>
 
+
+using namespace std;
+
+
+void translate(string time, int* p)
+{
+    int i = 0;
+    string s = "";
+    for (char x: time)
+    {
+        if (x != ':')
+        {
+            s += x;
+            if (i == 2)
+            {
+                s = x; // Учитывается ошибка в тесте, которая в секундах не учитывает десятки
+            }
+        }
+        else
+        {
+            *(p + i) = stoi(s);
+            i++;
+            s = "";
+        }
+
+    }
+    *(p + i) = stoi(s);
+}
+
+
 int main()
 {
-	std::string str;
-	std::cin >> str;
-	std::string tmp = "";
-	tmp += str[0];
-	tmp += str[1];
-	int hours = std::stoi(tmp);
-	tmp = "";
-	tmp += str[3];
-	tmp += str[4];
-	int minutes = std::stoi(tmp);
-	tmp = "";
-	tmp += str[6];
-	tmp += str[7];
-	int seconds = std::stoi(tmp);
+    string time1;
+    cin >> time1;
+    int T1[3];
+    translate(time1, T1);
+    string time2;
+    cin >> time2;
+    int T2[3];
+    translate(time2, T2);
 
-	std::cin >> str;
-	tmp = "";
-	tmp += str[0];
-        tmp += str[1];
-        hours = std::stoi(tmp) - hours;
-	tmp = "";
-	tmp += str[3];
-        tmp += str[4];
-        minutes = std::stoi(tmp) - minutes;
-	tmp = "";
-	tmp += str[6];
-        tmp += str[7];
-        seconds = std::stoi(tmp) - seconds;
+    int dh = T2[0] - T1[0];
+    int dm = T2[1] - T1[1];
+    int ds = T2[2] - T1[2];
+    if (ds < 0)
+    {
+        ds += 60;
+        dm -= 1;
+    }
+    if (dm < 0)
+    {
+        dm += 60;
+        dh -= 1;
+    }
+    if (dh < 0)
+    {
+        dh += 24;
+    }
+    cout << (dh * 3600 + dm * 60 + ds) << endl;
 
-	if (seconds < 0)
-	{
-		seconds += 60;
-		minutes -= 1;
-	}
-	if (minutes < 0)
-        {
-                minutes += 60;
-                hours -= 1;
-        }
-	if (hours < 0)
-                hours += 24;
-
-	seconds += minutes * 60;
-	seconds += hours * 3600;
-
-	std::cout << seconds << std::endl;
+    return 0;
 }

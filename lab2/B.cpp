@@ -1,18 +1,18 @@
 #include <iostream>
-#include <string>
 
-std::string is_year(int year)
-{
-	std::string answer;
-	if ((year % 400 == 0) || (year % 100 != 0) && (year % 4 == 0))
-		answer = "YES";
-	else
-		answer = "NO";
-	return answer;
-}
+using namespace std;
+
 int main()
 {
-	int year;
-	std::cin >> year;
-	std::cout << is_year(year);
+    int year;
+    cin >> year;
+    if ((year % 4 == 0 and year % 100 != 0) or (year % 400 == 0))
+    {
+        cout << "YES";
+    }
+    else
+    {
+        cout << "NO";
+    }
+    return 0;
 }

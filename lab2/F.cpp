@@ -1,30 +1,32 @@
 #include <iostream>
 
-int f()
-{
-        int number = 0;
-        int max_num = 0;
-	int k = 0;
-        while (true)
-        {
-                std::cin >> number;
-                if (number != 0)
-		{
- 	        	if (number > max_num)
-			{
-				max_num = number;
-				k = 0;
-			}
-			if (number == max_num)
-				k ++;
-		}
-		else
-			return k;
-        }
-}
+using namespace std;
 
 int main()
 {
-        std::cout << f();
+    int counter = 0;
+    int max_number = 0;
+    while (true)
+    {
+        int n;
+        cin >> n;
+        if (n!=0)
+        {
+            if (n == max_number)
+            {
+                counter ++;
+            }
+            if (n > max_number)
+            {
+                counter = 1;
+                max_number = n;
+            }
+        }
+        else
+        {
+            break;
+        }
+    }
+    cout << counter;
+    return 0;
 }
-

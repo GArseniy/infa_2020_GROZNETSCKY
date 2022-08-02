@@ -1,29 +1,24 @@
 #include <iostream>
 
-int NOD(int a, int b)
-{
-	while (true)
-	{
-		if (a > b)
-		{
-			a = a % b;
-			if (a == 0)
-				return b;
-		}
-		else 
-		{
-			b = b % a;
-			if (b == 0)
-				return a;
-		}
-	}
-
-}
+using namespace std;
 
 int main()
 {
-	int a,b;
-	std::cin >> a;
-	std::cin >> b;
-	std::cout << NOD(a, b);
+    int a, b;
+    cin >> a;
+    cin >> b;
+    if (a > b)
+    {
+        int tmp = a;
+        a = b;
+        b = tmp;
+    }
+    while (a != 0)
+    {
+        int tmp = a;
+        a = b%a;
+        b = tmp;
+    }
+    cout << b;
+    return 0;
 }
