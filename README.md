@@ -1,1 +1,1 @@
-# 2020 MIPT: C++ course
+# 2020 MIPT: Algorithms and Data Structures course on C++
